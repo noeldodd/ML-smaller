@@ -1,10 +1,45 @@
 #define INPUTS 4
 #define HIDDEN_NODES 4
 #define OUTPUTS 1
-#define DELTA 0.0001
+#define DELTA 0.0001  // Fake calculus
 
-// Example weights (initialize with your values or random values)
+// Times of day; makes fake training data easier to look at.
+#define T_0000 0.0000  // 00:00 = 000/255
+#define T_0100 0.0392  // 01:00 = 010/255
+#define T_0200 0.0784  // 02:00 = 020/255
+#define T_0300 0.1176  // 03:00 = 030/255
+#define T_0400 0.1569  // 04:00 = 040/255
+#define T_0500 0.1961  // 05:00 = 050/255
+#define T_0600 0.2353  // 06:00 = 060/255
+#define T_0700 0.2745  // 07:00 = 070/255
+#define T_0800 0.3137  // 08:00 = 080/255
+#define T_0900 0.3529  // 09:00 = 090/255
+#define T_1000 0.3922  // 10:00 = 100/255
+#define T_1100 0.4314  // 11:00 = 110/255
+#define T_1200 0.4706  // 12:00 = 120/255
+#define T_1300 0.5098  // 13:00 = 130/255
+#define T_1400 0.5490  // 14:00 = 140/255
+#define T_1500 0.5882  // 15:00 = 150/255
+#define T_1600 0.6275  // 16:00 = 160/255
+#define T_1700 0.6667  // 17:00 = 170/255
+#define T_1800 0.7059  // 18:00 = 180/255
+#define T_1900 0.7451  // 19:00 = 190/255
+#define T_2000 0.7843  // 20:00 = 200/255
+#define T_2100 0.8235  // 21:00 = 210/255
+#define T_2200 0.8627  // 22:00 = 220/255
+#define T_2300 0.9020  // 23:00 = 230/255
 
+// Same for Day of Week
+#define D_MONDAY           0.0    // 0: Monday
+#define D_TUESDAY          0.1216 // 1: Tuesday
+#define D_WEDNESDAY        0.2471 // 2: Wednesday
+#define D_THURSDAY         0.3725 // 3: Thursday
+#define D_FRIDAY           0.4980 // 4: Friday
+#define D_SATURDAY         0.6235 // 5: Saturday
+#define D_SUNDAY           0.7490 // 6: Sunday
+#define D_STAT             0.8745 // 7: Placeholder weekdays that fall on a stat
+
+// Example weights (initialize with realistic values or random values)
 float weights1[INPUTS][HIDDEN_NODES] = {{0.1, -0.2, 0.3, -0.4},
 {0.5, -0.6, 0.7, -0.8},
 {0.9, -1.0, 1.1, -1.2},
